@@ -34,3 +34,24 @@ assert.equal(validAnagram('', ''), true);
 assert.equal(validAnagram('a', 'aa'), false);
 assert.equal(validAnagram('asdaad', 'bbaswq'), false);
 assert.equal(validAnagram('iceman', 'cinema'), true);
+
+
+const validAnagramTwo = (strOne, strTwo) => {
+  if (strOne.length !== strTwo.length) return false;
+  const chars = {};
+  for (let i = 0; i < strOne.length; i++) {
+    chars[strOne[i]] = chars[strOne[i]] ? chars[strOne[i]] + 1 : 1;
+  }
+  for (let j = 0; j < strTwo.length; j++) {
+    if (!chars[strTwo[j]] || chars[strTwo[j]] === 0) return false;
+    chars[strTwo[j]] -= 1;
+  }
+  return true;
+};
+
+assert.equal(validAnagramTwo('asdasd', 'dasdas'), true);
+assert.equal(validAnagramTwo('aaz', 'zza'), false);
+assert.equal(validAnagramTwo('', ''), true);
+assert.equal(validAnagramTwo('a', 'aa'), false);
+assert.equal(validAnagramTwo('asdaad', 'bbaswq'), false);
+assert.equal(validAnagramTwo('iceman', 'cinema'), true);
