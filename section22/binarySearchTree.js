@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-constant-condition */
+/* eslint-disable no-else-return */
 class Node {
   constructor(val) {
     this.val = val;
@@ -16,27 +19,36 @@ class BinarySearchTree {
     if (this.root === null) {
       this.root = newNode;
       return this;
-      // eslint-disable-next-line no-else-return
     } else {
       let node = this.root;
-      // eslint-disable-next-line no-constant-condition
       while (true) {
         if (val === node.val) return undefined;
         if (val < node.val && node.left === null) {
           node.left = newNode;
           return this;
-        }
-        if (val < node.val) {
+        } else if (val < node.val) {
           node = node.left;
-        }
-        if (val > node.val && node.right === null) {
+        } else if (val > node.val && node.right === null) {
           node.right = newNode;
           return this;
-        }
-        if (val > node.val) {
+        } else if (val > node.val) {
           node = node.right;
         }
-      };
+      }
+    }
+  }
+
+  find(val) {
+    let currentNode = this.root;
+    while (true) {
+      if (currentNode.val === val) return true;
+      if (val > currentNode.val && currentNode.right !== null) {
+        currentNode = currentNode.right;
+      } else if (val < currentNode.val && currentNode.left !== null) {
+        currentNode = currentNode.left;
+      } else {
+        return false;
+      }
     }
   }
 }
