@@ -39,6 +39,7 @@ class BinarySearchTree {
   }
 
   find(val) {
+    if (this.root === null) return undefined;
     let currentNode = this.root;
     while (true) {
       if (currentNode.val === val) return true;
