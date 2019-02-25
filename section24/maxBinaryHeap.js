@@ -24,4 +24,29 @@ class MaxBinaryHeap {
         this.bubbleUp();
         return this;
     }
+    
+    sinkDown() {
+        let index = 0;
+        const element = this.values[0];
+        let leftChild = this.values[(index * 2) + 1];
+        let rightChild = this.values[(index * 2) + 2];
+        while (element < leftChild || element < rightChild) {
+            if (rightChild === undefined || rightChild > leftChild) {
+                this.swap(index, (index * 2) + 2);
+                index = (index * 2) + 2;
+            } else {
+                this.swap(index, (index * 2) + 1);
+                index = (index * 2) + 1;
+            }
+            leftChild = this.values[(index * 2) + 1];
+            rightChild = this.values[(index * 2) + 2];
+        }
+
+    }
+
+    extractMax() {
+        this.swap(0, this.values.length - 1);
+        const removed = this.values.pop();
+        return removed;
+    }
 }
