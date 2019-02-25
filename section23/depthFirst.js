@@ -19,3 +19,14 @@ const postOrder = (tree) => {
   traverse(tree.root);
   return treeElements;
 };
+
+const inOrder = (tree) => {
+  const treeElements = [];
+  const traverse = (node) => {
+    if (node.left) traverse(node.left);
+    treeElements.push(node.val);
+    if (node.right) traverse(node.right);
+  };
+  traverse(tree.root);
+  return treeElements;
+};
