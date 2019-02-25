@@ -1,6 +1,25 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-else-return */
+
+/*
+
+Binary Search Trees are trees where each node has
+lesser values on it's left, and greater values
+on it's right.
+
+IE:
+
+          0
+      -1     2
+           1   3
+
+Time Complexity:
+* Insertion: O(log n)
+* Searching: O(log n)
+
+*/
+
 class Node {
   constructor(val) {
     this.val = val;
