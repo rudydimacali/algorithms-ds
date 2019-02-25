@@ -24,7 +24,7 @@ class MaxBinaryHeap {
         this.bubbleUp();
         return this;
     }
-    
+
     sinkDown() {
         let index = 0;
         const element = this.values[0];
@@ -47,6 +47,7 @@ class MaxBinaryHeap {
     extractMax() {
         this.swap(0, this.values.length - 1);
         const removed = this.values.pop();
+        this.sinkDown();
         return removed;
     }
 }
