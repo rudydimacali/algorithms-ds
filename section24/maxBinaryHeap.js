@@ -1,3 +1,13 @@
+/*
+
+Binary Heap Time Complexity:
+
+Insertion: O(log n)
+Removal: O(log n)
+Search: O(n)
+
+*/
+
 class MaxBinaryHeap {
   constructor() {
     this.values = [];

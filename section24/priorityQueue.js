@@ -1,3 +1,13 @@
+/*
+
+Priority Queue Time Complexity:
+
+Insertion: O(log n)
+Removal: O(log n)
+Search: O(n)
+
+*/
+
 class Node {
   constructor(val, priority) {
     this.val = val;
