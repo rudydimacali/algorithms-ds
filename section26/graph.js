@@ -53,3 +53,27 @@ Remove Edge     O(|E|)              O(1)
 Query           O(|V| + |E|)        O(1)
 Storage         O(|V| + |E|)        O(|V^2|)
 */
+
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    return this.adjacencyList;
+  }
+
+  addEdge(vertexOne, vertexTwo) {
+    if (!this.adjacencyList.includes(vertexOne) || !this.adjacencyList.includes(vertexTwo)) {
+      return undefined;
+    }
+    if (!this.adjacencyList[vertexOne].includes(vertexTwo)) {
+      this.adjacencyList[vertexOne].push(vertexTwo);
+    }
+    if (!this.adjacencyList[vertexTwo].includes(vertexOne)) {
+      this.adjacencyList[vertexTwo].push(vertexOne);
+    }
+    return this.adjacencyList;
+  }
+}
