@@ -76,4 +76,26 @@ class Graph {
     }
     return this.adjacencyList;
   }
+
+  removeEdge(vertexOne, vertexTwo) {
+    if (this.adjacencyList[vertexOne].includes(vertexTwo)) {
+      const index = this.adjacencyList[vertexOne].indexOf(vertexTwo);
+      this.adjacencyList[vertexOne].splice(index, 1);
+    }
+    if (this.adjacencyList[vertexTwo].includes(vertexOne)) {
+      const index = this.adjacencyList[vertexTwo].indexOf(vertexOne);
+      this.adjacencyList[vertexTwo].splice(index, 1);
+    }
+    return this.adjacencyList;
+  }
+
+  removeVertex(vertex) {
+    if (!this.adjacencyList.includes(vertex)) return undefined;
+    while (this.adjacencyList[vertex].length) {
+      const adjacentVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, adjacentVertex);
+    }
+    delete this.adjacencyList[vertex];
+    return this.adjacencyList;
+  }
 }
