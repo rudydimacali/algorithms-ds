@@ -103,7 +103,7 @@ class Graph {
   }
 
   depthFirstSearchRecursive(start) {
-    if (this.adjacencyList[vertex].length === 0) return undefined;
+    if (this.adjacencyList[start].length === 0) return undefined;
     const results = [];
     const visited = {};
     const adjacencyList = this.adjacencyList;
@@ -116,6 +116,25 @@ class Graph {
       });
     };
     traverse(start);
+    return results;
+  }
+
+  depthFirstSearchIterative(start) {
+    if (this.adjacencyList[start].length === 0) return undefined;
+    const results = [];
+    const visited = {};
+    visited[start] = true;
+    const stack = [start];
+    while (stack.length) {
+      const vertex = stack.pop();
+      results.push(vertex);
+      this.adjacencyList[vertex].forEach((node) => {
+        if (!visited[node]) {
+          visited[node] = true;
+          stack.push(node);
+        }
+      });
+    }
     return results;
   }
 }
