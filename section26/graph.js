@@ -137,4 +137,23 @@ class Graph {
     }
     return results;
   }
+
+  breadthFirstSearchIterative(start) {
+    if (this.adjacencyList[start].length === 0) return undefined;
+    const results = [];
+    const visited = {};
+    visited[start] = true;
+    const queue = [start];
+    while (queue.length) {
+      const vertex = queue.shift();
+      results.push(vertex);
+      this.adjacencyList[vertex].forEach((node) => {
+        if (!visited[node]) {
+          visited[node] = true;
+          queue.push(node);
+        }
+      });
+    }
+    return results;
+  }
 }
