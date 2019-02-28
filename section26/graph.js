@@ -1,3 +1,6 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable consistent-return */
+
 /*
 
 Storing graphs:
@@ -97,5 +100,22 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
     return this.adjacencyList;
+  }
+
+  depthFirstSearchRecursive(start) {
+    if (this.adjacencyList[vertex].length === 0) return undefined;
+    const results = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+    const traverse = (vertex) => {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      results.push(vertex);
+      adjacencyList[vertex].forEach((node) => {
+        if (!visited[node]) traverse(node);
+      });
+    };
+    traverse(start);
+    return results;
   }
 }
