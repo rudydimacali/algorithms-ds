@@ -68,7 +68,8 @@ class Graph {
   }
 
   addEdge(vertexOne, vertexTwo) {
-    if (!this.adjacencyList.includes(vertexOne) || !this.adjacencyList.includes(vertexTwo)) {
+    if (!this.adjacencyList.hasOwnProperty(vertexOne)
+      || !this.adjacencyList.hasOwnProperty(vertexTwo)) {
       return undefined;
     }
     if (!this.adjacencyList[vertexOne].includes(vertexTwo)) {
